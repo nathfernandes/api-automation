@@ -1,0 +1,67 @@
+# =========================
+# Java
+# =========================
+*.class
+*.log
+
+# =========================
+# Maven
+# =========================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# =========================
+# IntelliJ IDEA
+# =========================
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# =========================
+# Eclipse
+# =========================
+.project
+.classpath
+.settings/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# Mac OS
+# =========================
+.DS_Store
+
+# =========================
+# Windows
+# =========================
+Thumbs.db
+
+# =========================
+# Test reports
+# =========================
+allure-results/
+allure-report/
+test-output/
+
+# =========================
+# Coverage (se usar depois)
+# =========================
+jacoco.exec
+coverage/
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.swp
+*.bak
