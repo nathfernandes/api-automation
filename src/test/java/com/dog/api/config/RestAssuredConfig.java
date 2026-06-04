@@ -8,20 +8,20 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
 public class RestAssuredConfig {
-    private static RequestSpecification requestSpecification;
+    private static RequestSpecification requestSpec;
 
     public static void init() {
         RestAssured.baseURI = ProjectConstants.BASE_URL;
 
-        requestSpecification = new RequestSpecBuilder()
+        requestSpec = new RequestSpecBuilder()
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
                 .build();
 
-        RestAssured.requestSpecification = requestSpecification;
+        RestAssured.requestSpecification = requestSpec;
     }
 
     public static RequestSpecification getRequestSpec() {
-        return requestSpecification;
+        return requestSpec;
     }
 }

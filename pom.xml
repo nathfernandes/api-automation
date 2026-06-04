@@ -16,6 +16,7 @@
     <restassured.version>5.4.0</restassured.version>
     <assertj.version>3.25.3</assertj.version>
     <slf4j.version>2.0.13</slf4j.version>
+    <allure.version>2.29.1</allure.version>
   </properties>
 
   <dependencies>
@@ -28,7 +29,14 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- JSON parsing (Jackson support for RestAssured) -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>5.4.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JSON parsing -->
     <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>json-path</artifactId>
@@ -44,7 +52,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- AssertJ (melhora muito leitura dos asserts) -->
+    <!-- AssertJ -->
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
@@ -52,11 +60,26 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Logging (opcional mas recomendado) -->
+    <!-- Logging -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>${slf4j.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Allure JUnit 5 -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-junit5</artifactId>
+      <version>${allure.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-java-commons</artifactId>
+      <version>2.29.1</version>
       <scope>test</scope>
     </dependency>
 
@@ -76,13 +99,27 @@
         </configuration>
       </plugin>
 
-      <!-- Surefire (JUnit 5 runner) -->
+      <!-- Surefire -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.5</version>
         <configuration>
           <useModulePath>false</useModulePath>
+          <systemPropertyVariables>
+            <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+
+      <!-- Allure report generator -->
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>2.12.0</version>
+
+        <configuration>
+          <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
         </configuration>
       </plugin>
 
